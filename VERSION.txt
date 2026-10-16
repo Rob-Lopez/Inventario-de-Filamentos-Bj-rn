@@ -1,0 +1,4 @@
+Inventario Filamentos 3D
+v1.1 Beta
+
+Paquete listo para publicar en GitHub Pages y probar en Android/iPhone.

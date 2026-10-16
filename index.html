@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Inventario personal de filamentos 3D, disponible sin conexión.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Filamentos 3D">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>Inventario Filamentos 3D · v1.1 Beta</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">F</span><div><strong>Filamentos 3D</strong><small>Inventario personal · v1.1 Beta</small></div></div>
+    <div class="top-actions">
+      <button class="icon-button" id="backupBtn" title="Copias de seguridad" aria-label="Copias de seguridad">⇧</button>
+      <button class="primary-button" id="addBtn">＋ <span>Añadir filamento</span></button>
+      <input id="importFile" type="file" accept="application/json,.json" hidden>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="summary-grid" id="stats"></section>
+    <section class="panel inventory-panel">
+      <div class="panel-heading">
+        <div><h1>Inventario</h1><p id="inventorySub">Organiza tus bobinas y controla el material restante.</p></div>
+        <div class="view-switch" role="tablist" aria-label="Vista del inventario">
+          <button class="view-tab active" data-view="list" role="tab">☷ <span>Lista</span></button>
+          <button class="view-tab" data-view="grid" role="tab">▦ <span>Cuadrícula</span></button>
+        </div>
+      </div>
+      <div class="filters">
+        <label class="search-field"><span>⌕</span><input id="search" type="search" placeholder="Buscar marca, nombre o color"></label>
+        <select id="filterMaterial" aria-label="Filtrar por material"><option value="">Todos los materiales</option></select>
+        <select id="filterBrand" aria-label="Filtrar por marca"><option value="">Todas las marcas</option></select>
+        <select id="filterColor" aria-label="Filtrar por color"><option value="">Todos los colores</option></select>
+        <select id="filterState" aria-label="Filtrar por disponibilidad"><option value="">Cualquier estado</option><option value="available">Con material</option><option value="empty">Agotados</option></select>
+        <select id="filterStock" aria-label="Filtrar por cantidad"><option value="">Cualquier cantidad</option><option value="low">Hasta 1 kg</option><option value="medium">1 a 5 kg</option><option value="high">Más de 5 kg</option></select>
+      </div>
+      <div id="listView" class="list-view"></div>
+      <div id="gridView" class="grid-view hidden"></div>
+    </section>
+    <p class="privacy-note">Tus datos se guardan en este dispositivo. Exporta copias JSON con regularidad para evitar pérdidas.</p>
+  </main>
+
+  <dialog id="filamentDialog" class="modal wide-modal">
+    <form id="filamentForm" method="dialog">
+      <div class="modal-heading"><div><span class="eyebrow">NUEVO REGISTRO</span><h2 id="formTitle">Añadir filamento</h2></div><button type="button" class="close-button" data-close="filamentDialog" aria-label="Cerrar">×</button></div>
+      <input type="hidden" id="filamentId">
+      <div class="form-layout">
+        <section class="form-section">
+          <h3>Identificación</h3>
+          <div class="form-grid">
+            <label>Marca<input id="brand" placeholder="eSUN" autocomplete="off"></label>
+            <label>Nombre comercial<input id="name" placeholder="PLA+" autocomplete="off"></label>
+            <label>Material<select id="material"><option>PLA</option><option>PLA+</option><option>PETG</option><option>ABS</option><option>ASA</option><option>TPU</option><option>PA</option><option>PC</option><option>Otro</option></select></label>
+            <label>Color<input id="colorName" placeholder="Negro" autocomplete="off"></label>
+            <label>Acabado visual<select id="finish"><option value="normal">Normal</option><option value="metallic">Metálico</option><option value="glossy">Brillante</option><option value="matte">Mate</option><option value="transparent">Transparente</option><option value="multicolor">Multicolor</option></select></label>
+            <label>Nombre personalizado (opcional)<input id="customFinishName" placeholder="Seda, madera, cambio de color…"></label><label>Efecto visual aproximado<select id="customFinishEffect"><option value="normal">Normal</option><option value="metallic">Metálico</option><option value="glossy">Brillante</option><option value="matte">Mate</option><option value="transparent">Transparente</option><option value="multicolor">Multicolor</option></select></label>
+            <label class="color-picker-label">Color visual<div class="color-line"><input id="colorHex" type="color" value="#25272b"><input id="colorText" maxlength="7" value="#25272B" aria-label="Código hexadecimal"></div><div class="palette-line"><div id="palette" class="palette"></div><button type="button" id="saveColorBtn" class="palette-save">☆ Guardar color favorito</button></div><div class="color-preview"><span>Vista previa</span><div id="formPreview"></div></div></label>
+            <label>Temperatura extrusor (°C)<div class="range-pair"><input id="nozzleMin" type="number" placeholder="Mín."><input id="nozzleMax" type="number" placeholder="Máx."></div></label>
+            <label>Temperatura cama (°C)<div class="range-pair"><input id="bedMin" type="number" placeholder="Mín."><input id="bedMax" type="number" placeholder="Máx."></div></label>
+          </div>
+        </section>
+        <section class="form-section">
+          <div class="section-row"><div><h3>Rollos</h3><p class="muted">Cada rollo conserva su propio peso y precio.</p></div><button type="button" class="secondary-button" id="addRollBtn">＋ Añadir rollo</button></div>
+          <div id="rollEditor" class="roll-editor"></div>
+        </section>
+        <section class="form-section">
+          <div class="section-row"><div><h3>Leer etiqueta</h3><p class="muted">Procesamiento local en este dispositivo.</p></div><label class="secondary-button file-button">▧ Foto<input id="ocrFile" type="file" accept="image/*" capture="environment" hidden></label></div>
+          <div id="ocrStatus" class="ocr-status">El texto reconocido se podrá revisar antes de guardar.</div>
+        </section>
+      </div>
+      <div class="modal-footer"><button type="button" class="secondary-button" data-close="filamentDialog">Cancelar</button><button type="submit" class="primary-button">Guardar filamento</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="detailDialog" class="modal detail-modal"><div id="detailContent"></div></dialog>
+  <dialog id="backupDialog" class="modal backup-modal">
+    <div class="modal-heading"><div><span class="eyebrow">TUS DATOS</span><h2>Copias de seguridad</h2></div><button type="button" class="close-button" data-close="backupDialog" aria-label="Cerrar">×</button></div>
+    <p>La copia incluye el inventario y tus preferencias. Importar un archivo reemplaza los datos actuales después de confirmar.</p>
+    <div class="backup-actions"><button class="secondary-button" id="exportBtn">⇩ Exportar copia JSON</button><button class="secondary-button" id="importBtn">⇧ Importar copia JSON</button></div>
+    <p class="muted tiny">Los datos del navegador no se sincronizan entre dispositivos. Guarda el archivo en un lugar seguro.</p>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="assets/tesseract.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
