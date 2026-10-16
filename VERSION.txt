@@ -1,4 +1,5 @@
-Inventario Filamentos 3D
-v1.1 Beta
-
-Paquete listo para publicar en GitHub Pages y probar en Android/iPhone.
+Filamentos 3D — v1.2 Beta
+Base: v1.1 Beta
+Datos locales: IndexedDB existente (sin cambio de nombre ni borrado)
+Cache offline: filamentos-v1.2-beta-1
+Paquete: archivos en la raíz, preparado para GitHub Pages / (root)

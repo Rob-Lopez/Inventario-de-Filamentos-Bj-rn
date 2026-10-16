@@ -1,4 +1,4 @@
-const VERSION='filamentos-v1.1-beta-1';
+const VERSION='filamentos-v1.2-beta-1';
 const SHELL=['./','./index.html','./styles.css','./app.js','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./assets/tesseract.min.js','./assets/worker.min.js','./assets/tesseract-core.wasm.js','./assets/tesseract-core-simd.wasm.js','./assets/tesseract-core-lstm.wasm.js','./assets/tesseract-core-simd-lstm.wasm.js','./assets/tessdata/eng.traineddata'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(VERSION).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('filamentos-')&&k!==VERSION).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});

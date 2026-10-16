@@ -1,61 +1,54 @@
-# Inventario Filamentos 3D — v1.1 Beta
+# Filamentos 3D — v1.2 Beta
 
-PWA personal para registrar bobinas, consumo, cantidades, precios y temperaturas. Los datos permanecen en el dispositivo, en IndexedDB. Incluye OCR local en inglés con Tesseract.js y copia de seguridad JSON.
+PWA personal para iPhone, Android, Windows y Mac. Mantiene todos los datos en el dispositivo mediante IndexedDB y puede funcionar sin conexión después de abrirse una vez con Internet. No contiene datos de ejemplo. Si se borran los datos del navegador, también puede borrarse el inventario: guarda copias JSON con regularidad.
 
-## Publicar gratis en GitHub Pages
+## Cambios de v1.2 Beta
 
-1. Crea una cuenta gratuita de GitHub si aún no tienes una.
-2. Crea un repositorio público llamado `inventario-filamentos`.
-3. Descomprime esta carpeta y sube **todo su contenido** a la raíz del repositorio. Conserva la carpeta `assets` y sus archivos.
-4. En GitHub, abre **Settings → Pages**. En **Build and deployment**, selecciona **Deploy from a branch**, rama `main` y carpeta `/ (root)`, luego guarda.
-5. Espera a que GitHub publique el sitio. La URL será similar a `https://TU-USUARIO.github.io/inventario-filamentos/`.
-6. Abre la URL con conexión en línea una vez para que el navegador descargue la aplicación y los recursos OCR (unos veinte megabytes antes de la compresión de red). En la siguiente visita ya podrá abrir y trabajar sin conexión.
+- Consolida registros que representan el mismo producto en una sola tarjeta, conservando los datos de compra y consumo de cada bobina. Diferencias de color, material, acabado o temperaturas mantienen referencias distintas.
+- La cuadrícula muestra una tarjeta por producto y el número total de bobinas en el centro. En la lista, **＋** permite añadir una o varias bobinas y **−** permite elegir cuál retirar.
+- Catálogo de marcas y materiales habituales en Europa, sugerencias de nombres comerciales y elementos personalizados. Gestionar sugerencias no borra filamentos existentes.
+- Plantillas completas o sin color, creadas desde un producto o manualmente; permiten aplicar, editar, duplicar y borrar.
+- Selector de color sincronizado con controles de tono, saturación y luminosidad, código hexadecimal, colores sugeridos y favoritos.
+- Fotografías tomadas con cámara o seleccionadas desde el dispositivo. Se comprimen localmente; se incluyen en el respaldo JSON.
+- Proveedores editables por compra, con enlaces y notas.
+- Exportación visual de inventario para imprimir o guardar como PDF desde el diálogo de impresión del sistema.
+- Importación compatible con respaldos JSON v1.1 y migración automática de datos locales. No elimina datos guardados al actualizar los archivos.
 
-El repositorio será público con GitHub Free. Esto publica el código de la aplicación, pero no el inventario: cada dispositivo guarda sus propios datos localmente.
+## Actualizar el sitio existente en GitHub Pages
 
-## Instalar
+1. Antes de actualizar, abre la aplicación v1.1 en el mismo dispositivo y exporta una copia JSON como precaución.
+2. Descarga y descomprime el ZIP v1.2 Beta.
+3. En el repositorio existente `Rob-Lopez/Inventario-de-Filamentos-Bj-rn`, reemplaza los archivos publicados por el contenido de este ZIP. Sube `index.html`, `app.js`, `styles.css`, `sw.js`, el manifiesto, iconos y la carpeta `assets` directamente a la raíz. No subas solo el ZIP ni una carpeta contenedora.
+4. Confirma los cambios en la rama `main`. GitHub Pages seguirá publicando desde `main` y `/(root)`.
+5. En cada teléfono, abre el mismo enlace del sitio con Internet y espera a que cargue v1.2. Si sigue apareciendo v1.1, cierra completamente la PWA y vuelve a abrirla. El service worker usa una caché nueva para descargar la actualización.
+6. Revisa inventario, cantidades y fotografías. No borres los datos del navegador ni desinstales la aplicación antes de comprobarlos.
 
-### iPhone
+**La actualización de archivos no borra IndexedDB.** La aplicación consolida duplicados equivalentes al iniciar: une sus bobinas individuales sin perder fechas, pesos, precios, proveedores ni consumos. Mantiene los datos separados en cada navegador/dispositivo.
 
-Abre el enlace en **Safari** → **Compartir** → **Añadir a pantalla de inicio** → activa **Abrir como app web** → **Añadir**.
+## Instalación
 
-### Android
+- **Android:** abre el enlace con Chrome o Samsung Internet y usa el menú del navegador → **Instalar aplicación** o **Añadir a pantalla de inicio**.
+- **iPhone:** abre el enlace en Safari → **Compartir** → **Añadir a pantalla de inicio**.
+- Para descargar los archivos offline, abre la aplicación con Internet al menos una vez antes de usar el modo avión.
 
-Abre el enlace en Chrome → menú **⋮** → **Instalar aplicación** o **Añadir a pantalla de inicio**.
+## PDF y respaldos
 
-## Pruebas recomendadas
+**Exportar inventario PDF** abre el diálogo de impresión del navegador. Elige **Guardar como PDF** (Android/Windows/Chrome) o la opción PDF de Compartir/Imprimir disponible en Safari. El informe se genera localmente, también sin conexión, y muestra resumen, referencias agrupadas por marca, fotos o bobinas ilustradas y detalle de cada bobina.
 
-- Añade un filamento manualmente; prueba los dos modos de vista y filtros por marca, material, color y disponibilidad. En la lista, usa + para agregar un rollo repetido y − para quitar el último, con confirmación.
-- Cambia el número de columnas y vuelve a cargar la aplicación para verificar que se guarda.
-- Añade rollos con precios distintos; los botones rápidos copian el peso y precio del último rollo y puedes modificarlos en la ficha. Prueba los acabados visuales normal, metálico, brillante, mate, transparente y multicolor.
-- Registra consumos, prueba rollos agotados y revisa cantidades y estadísticas.
-- Exporta una copia JSON, impórtala después de confirmar el reemplazo y revisa los datos.
-- Abre la PWA con conexión una vez; después activa modo avión y vuelve a abrirla. Comprueba navegación, datos y OCR.
-- Verifica en Safari del iPhone la instalación, cámara/selector de fotos y funcionamiento sin conexión.
+El respaldo **JSON** es el formato que conserva los datos editables, incluidas fotos, plantillas, proveedores y catálogos. Debido a las fotografías puede ocupar más espacio; la aplicación reduce las imágenes antes de guardarlas. Guarda el JSON fuera del dispositivo (por ejemplo, en Drive) y no lo subas al repositorio público.
 
-## Cambios de v1.1 Beta
+## Protección de datos y límites
 
-- En la vista de lista, **＋** añade un rollo con peso y precio inicial copiados del último rollo de ese filamento. La fecha se pone en hoy; los datos se pueden corregir en la ficha.
-- **−** quita el último rollo después de mostrar una confirmación; si queda uno solo, no permite dejar el filamento sin rollos.
-- El número de rollos aparece en grande al centro de cada bobina.
-- Acabados visuales: normal, metálico, brillante, mate, transparente y multicolor. Se puede dar un nombre propio a otro acabado y escoger el estilo visual más parecido.
-- La vista previa cambia al ajustar color o acabado.
+- El inventario no se sincroniza automáticamente entre dispositivos. Cada teléfono conserva su propia base local.
+- Borrar los datos del navegador puede borrar también el inventario. Exporta copias JSON con regularidad y antes de cambiar de teléfono.
+- No compartas públicamente el respaldo JSON: contiene fotos y datos personales del inventario.
+- La lectura OCR permanece local y depende del idioma y la calidad de la etiqueta; revisa los campos reconocidos.
+- La exportación PDF utiliza la impresión integrada en el sistema. En iPhone, el destino PDF se elige desde la hoja de impresión/compartir de Safari.
 
-## Estado de verificación
+## Comprobaciones de esta entrega
 
-Esta entrega se mantiene como **Beta** hasta probarse en los teléfonos de destino. Se comprobaron sintaxis JavaScript, manifest, archivos offline, cálculo de cantidades/precios y los seis gráficos de acabados. La compatibilidad final de instalación, uso sin conexión y OCR debe confirmarse en Samsung y Safari de iPhone.
+Se validan sintaxis JS, manifest, recursos offline, migración y agrupación, cálculos de peso/precio, importación JSON anterior, controles de rollo, selector de color y generación de HTML de impresión. Esta versión sigue siendo Beta hasta que se pruebe en Samsung Internet/Chrome y Safari de iPhone.
 
-## Datos y límites
+## Archivos
 
-- No hay cuenta ni sincronización. Cada dispositivo conserva un inventario independiente.
-- Exporta copias JSON antes de cambiar de teléfono o borrar datos del navegador.
-- El OCR corre localmente, con modelo inglés. Puede fallar en etiquetas pequeñas, brillantes, curvas o con texto en otros idiomas; revisa los datos reconocidos antes de guardarlos.
-- Las bobinas ilustradas son generadas por la aplicación; no se guardan imágenes por filamento.
-- El número de columnas se conserva en este dispositivo. Con quince columnas, los detalles de cada bobina quedan pequeños en una pantalla estrecha.
-- Para publicar una actualización, sube la nueva versión de los archivos al mismo repositorio. El service worker cambia de caché por versión y reclama la aplicación nueva; cierra y vuelve a abrir la PWA si aún ves la versión anterior.
-
-## Contenido
-
-- `index.html`, `styles.css`, `app.js`: aplicación.
-- `manifest.webmanifest`, `sw.js`, iconos: instalación y modo sin conexión.
-- `assets/`: motor OCR, modelo de idioma y licencias de terceros.
+`index.html`, `app.js`, `styles.css`, `manifest.webmanifest`, `sw.js`, iconos y `assets/` (Tesseract.js, modelo OCR local y licencias).
