@@ -6,5 +6,5 @@ databaseURL: "https://inventario-filamentos-20b9f-default-rtdb.europe-west1.fire
   storageBucket: "inventario-filamentos-20b9f.firebasestorage.app",
   messagingSenderId: "475035955329",
   appId: "1:475035955329:web:6f9c551bdeed172ed25d80",
-googleClientID: "475035955329-c658j5rcodebsmer3ak9vv6a1ltkgek5.apps.googleusercontent.com"
+googleClientId: "475035955329-c658j5rcodebsmer3ak9vv6a1ltkgek5.apps.googleusercontent.com"
 };
