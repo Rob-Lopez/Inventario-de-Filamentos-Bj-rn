@@ -1,4 +1,4 @@
-# Filamentos 3D — v1.3 Beta
+# Filamentos 3D — v1.3.1 Beta
 
 PWA personal para iPhone, Android, Mac y Windows. Conserva las funciones de v1.2: inventario local IndexedDB; lista, cuadrícula y ficha; bobinas individuales; cantidades y precios; catálogos, plantillas, fotos comprimidas, OCR local, PDF y respaldo JSON.
 
@@ -15,15 +15,15 @@ PWA personal para iPhone, Android, Mac y Windows. Conserva las funciones de v1.2
 
 ## Antes de publicar
 
-El ZIP incluye firebase-config.js vacío. Debes completar sus valores y configurar Firebase siguiendo CONFIGURAR_FIREBASE.md. Sin esa configuración, la aplicación funciona localmente, pero no puede iniciar sesión ni sincronizar. No vincules una cuenta de facturación si el proyecto debe permanecer en el plan gratuito Spark.
+La corrección acepta `window.FILAMENTS_FIREBASE_CONFIG`, `window.firebaseConfig`, `window.FIREBASE_CONFIG` y la variable estándar `const firebaseConfig`. También reconoce alias de propiedades. Requiere `apiKey`, `databaseURL` y el `googleClientId` del cliente OAuth web. Este último no suele venir en el objeto que Firebase muestra como configuración web. Si ya tienes un `firebase-config.js` válido, consérvalo al sustituir los demás archivos. Si falta una propiedad, la aplicación lo indica por nombre. La aplicación usa Firebase Authentication y Realtime Database mediante REST; no necesita descargar el SDK Firebase. No vincules una cuenta de facturación si el proyecto debe permanecer en el plan gratuito Spark.
 
-## Actualizar desde v1.2
+## Actualizar desde v1.3 Beta
 
-1. Guarda antes una copia JSON desde la v1.2, como protección adicional.
-2. Descomprime el ZIP y configura Firebase.
-3. Sustituye los archivos de la raíz publicada en GitHub Pages por los archivos del ZIP; conserva la base de datos de Firebase y no borres los datos del navegador.
-4. Abre la misma URL con Internet. La v1.3 mantiene IndexedDB y el service worker cambia a una caché nueva.
-5. Prueba primero con datos de prueba. Al conectar por primera vez ofrece conservar/subir o descargar los datos existentes; revisa la selección antes de aceptar.
+1. Conserva una copia JSON por seguridad.
+2. Descomprime el ZIP. Conserva el `firebase-config.js` ya configurado; el del ZIP es una plantilla vacía.
+3. Copia los demás archivos del ZIP a la raíz publicada en GitHub Pages. No borres los datos del navegador ni la base de datos Firebase.
+4. Abre la URL con Internet y recarga. La v1.3.1 conserva IndexedDB y fuerza una caché nueva para JavaScript, HTML y configuración.
+5. Comprueba la franja superior. Si falta un dato, indicará el nombre. Prueba primero con datos de prueba.
 
 ## Instalación y seguridad
 
