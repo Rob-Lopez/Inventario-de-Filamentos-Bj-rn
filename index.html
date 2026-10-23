@@ -12,12 +12,13 @@
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icon-192.png">
   <link rel="stylesheet" href="styles.css">
-  <title>Inventario Filamentos 3D · v1.3.1 Beta</title>
+  <title>Inventario Filamentos 3D · v1.3.2 Beta</title>
 </head>
 <body>
   <header class="topbar">
-    <div class="brand"><span class="brand-mark">F</span><div><strong>Filamentos 3D</strong><small>Inventario personal · v1.3.1 Beta</small></div></div>
+    <div class="brand"><span class="brand-mark">F</span><div><strong>Filamentos 3D</strong><small>Inventario personal · v1.3.2 Beta</small></div></div>
     <div class="top-actions">
+      <label class="language-picker" aria-label="Idioma"><span aria-hidden="true">🌐</span><select id="languageSelect" aria-label="Idioma"><option value="es">Español</option><option value="de">Deutsch</option><option value="en">English</option></select></label>
       <button class="icon-button" id="backupBtn" title="Copias de seguridad" aria-label="Copias de seguridad">⇧</button>
       <button class="secondary-button" id="pdfBtn">▤ <span>Exportar inventario PDF</span></button><button class="primary-button" id="addBtn">＋ <span>Añadir filamento</span></button>
       <input id="importFile" type="file" accept="application/json,.json" hidden>
@@ -111,6 +112,7 @@
   <dialog id="managerDialog" class="modal backup-modal"><div class="modal-heading"><div><span class="eyebrow">AJUSTES LOCALES</span><h2 id="managerTitle">Gestionar</h2></div><button type="button" class="close-button" data-close="managerDialog" aria-label="Cerrar">×</button></div><div id="managerContent"></div></dialog>
   <div id="printArea" aria-hidden="true"></div><div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="firebase-config.js"></script>
+  <script src="i18n.js"></script>
   <script src="cloud.js"></script>
   <script src="assets/tesseract.min.js"></script>
   <script src="app.js"></script>
