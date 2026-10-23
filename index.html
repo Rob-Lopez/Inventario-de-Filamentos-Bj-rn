@@ -12,17 +12,22 @@
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icon-192.png">
   <link rel="stylesheet" href="styles.css">
-  <title>Inventario Filamentos 3D · v1.2 Beta</title>
+  <title>Inventario Filamentos 3D · v1.3 Beta</title>
 </head>
 <body>
   <header class="topbar">
-    <div class="brand"><span class="brand-mark">F</span><div><strong>Filamentos 3D</strong><small>Inventario personal · v1.2 Beta</small></div></div>
+    <div class="brand"><span class="brand-mark">F</span><div><strong>Filamentos 3D</strong><small>Inventario personal · v1.3 Beta</small></div></div>
     <div class="top-actions">
       <button class="icon-button" id="backupBtn" title="Copias de seguridad" aria-label="Copias de seguridad">⇧</button>
       <button class="secondary-button" id="pdfBtn">▤ <span>Exportar inventario PDF</span></button><button class="primary-button" id="addBtn">＋ <span>Añadir filamento</span></button>
       <input id="importFile" type="file" accept="application/json,.json" hidden>
     </div>
   </header>
+
+  <section class="cloud-strip" aria-label="Sincronización en la nube">
+    <div class="cloud-state"><span id="cloudDot" class="cloud-dot"></span><div><strong id="cloudStatus">Solo en este dispositivo</strong><small id="cloudDetail">Conecta una cuenta Google para sincronizar.</small></div></div>
+    <div class="cloud-actions"><button class="secondary-button" id="cloudConnectBtn">Conectar con Google</button><button class="primary-button" id="cloudPublishBtn" disabled>Guardar en la nube</button><button class="secondary-button" id="cloudHistoryBtn" hidden>Historial</button></div>
+  </section>
 
   <main class="page">
     <section class="summary-grid" id="stats"></section>
@@ -99,12 +104,14 @@
   <dialog id="detailDialog" class="modal detail-modal"><div id="detailContent"></div></dialog>
   <dialog id="backupDialog" class="modal backup-modal">
     <div class="modal-heading"><div><span class="eyebrow">TUS DATOS</span><h2>Copias de seguridad</h2></div><button type="button" class="close-button" data-close="backupDialog" aria-label="Cerrar">×</button></div>
-    <p>La copia incluye el inventario y tus preferencias. Importar un archivo reemplaza los datos actuales después de confirmar.</p>
+    <p>La copia incluye el inventario y tus preferencias. Importar un archivo reemplaza los datos locales después de confirmar. La nube conserva inventarios separados por cuenta Google.</p>
     <div class="backup-actions"><button class="secondary-button" id="exportBtn">⇩ Exportar copia JSON</button><button class="secondary-button" id="importBtn">⇧ Importar copia JSON</button><button class="secondary-button" id="templatesBtn">▧ Plantillas de filamento</button><button class="secondary-button" id="catalogsBtn">☷ Marcas, materiales y proveedores</button></div>
-    <p class="muted tiny">Los datos del navegador no se sincronizan entre dispositivos. Guarda el archivo en un lugar seguro.</p>
+    <p class="muted tiny">Los datos locales se guardan en este dispositivo. Conecta Google para sincronizarlos; conserva también copias JSON fuera del navegador.</p>
   </dialog>
   <dialog id="managerDialog" class="modal backup-modal"><div class="modal-heading"><div><span class="eyebrow">AJUSTES LOCALES</span><h2 id="managerTitle">Gestionar</h2></div><button type="button" class="close-button" data-close="managerDialog" aria-label="Cerrar">×</button></div><div id="managerContent"></div></dialog>
   <div id="printArea" aria-hidden="true"></div><div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="firebase-config.js"></script>
+  <script src="cloud.js"></script>
   <script src="assets/tesseract.min.js"></script>
   <script src="app.js"></script>
 </body>

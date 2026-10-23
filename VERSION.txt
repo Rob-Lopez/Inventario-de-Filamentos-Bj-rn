@@ -1,5 +1,7 @@
-Filamentos 3D — v1.2 Beta
-Base: v1.1 Beta
-Datos locales: IndexedDB existente (sin cambio de nombre ni borrado)
-Cache offline: filamentos-v1.2-beta-1
+Filamentos 3D — v1.3 Beta
+Base: v1.2 Beta
+Datos locales: IndexedDB existente preservado y particionado por perfil Google al conectar
+Sincronización: Firebase Realtime Database, Google Authentication
+Cache offline: filamentos-v1.3-beta-1
 Paquete: archivos en la raíz, preparado para GitHub Pages / (root)
+Configuración pendiente: firebase-config.js y reglas Firebase según CONFIGURAR_FIREBASE.md

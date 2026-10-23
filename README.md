@@ -1,54 +1,38 @@
-# Filamentos 3D — v1.2 Beta
+# Filamentos 3D — v1.3 Beta
 
-PWA personal para iPhone, Android, Windows y Mac. Mantiene todos los datos en el dispositivo mediante IndexedDB y puede funcionar sin conexión después de abrirse una vez con Internet. No contiene datos de ejemplo. Si se borran los datos del navegador, también puede borrarse el inventario: guarda copias JSON con regularidad.
+PWA personal para iPhone, Android, Mac y Windows. Conserva las funciones de v1.2: inventario local IndexedDB; lista, cuadrícula y ficha; bobinas individuales; cantidades y precios; catálogos, plantillas, fotos comprimidas, OCR local, PDF y respaldo JSON.
 
-## Cambios de v1.2 Beta
+## Sincronización
 
-- Consolida registros que representan el mismo producto en una sola tarjeta, conservando los datos de compra y consumo de cada bobina. Diferencias de color, material, acabado o temperaturas mantienen referencias distintas.
-- La cuadrícula muestra una tarjeta por producto y el número total de bobinas en el centro. En la lista, **＋** permite añadir una o varias bobinas y **−** permite elegir cuál retirar.
-- Catálogo de marcas y materiales habituales en Europa, sugerencias de nombres comerciales y elementos personalizados. Gestionar sugerencias no borra filamentos existentes.
-- Plantillas completas o sin color, creadas desde un producto o manualmente; permiten aplicar, editar, duplicar y borrar.
-- Selector de color sincronizado con controles de tono, saturación y luminosidad, código hexadecimal, colores sugeridos y favoritos.
-- Fotografías tomadas con cámara o seleccionadas desde el dispositivo. Se comprimen localmente; se incluyen en el respaldo JSON.
-- Proveedores editables por compra, con enlaces y notas.
-- Exportación visual de inventario para imprimir o guardar como PDF desde el diálogo de impresión del sistema.
-- Importación compatible con respaldos JSON v1.1 y migración automática de datos locales. No elimina datos guardados al actualizar los archivos.
+- Acceso con cuenta Google mediante Firebase Authentication. No accede a Google Drive.
+- Cada cuenta tiene un inventario independiente en Firebase Realtime Database.
+- El inventario local sigue en IndexedDB y funciona sin Internet.
+- Al abrir, carga primero los datos locales y consulta únicamente la revisión remota. Si la revisión coincide, no descarga el inventario ni las fotos.
+- Las modificaciones se guardan localmente. Solo se publican al pulsar «Guardar en la nube».
+- Los cambios independientes se combinan; si dos dispositivos cambian el mismo dato, la app pide elegir qué versión conservar en esos campos.
+- Historial automático de versiones al publicar, activado por defecto: conserva cinco copias, configurable entre una y veinte. Se puede desactivar. El historial usa el espacio gratuito compartido del proyecto.
+- Cambiar de cuenta abre otro perfil local y otra ruta privada en la nube. No se mezclan los inventarios.
 
-## Actualizar el sitio existente en GitHub Pages
+## Antes de publicar
 
-1. Antes de actualizar, abre la aplicación v1.1 en el mismo dispositivo y exporta una copia JSON como precaución.
-2. Descarga y descomprime el ZIP v1.2 Beta.
-3. En el repositorio existente `Rob-Lopez/Inventario-de-Filamentos-Bj-rn`, reemplaza los archivos publicados por el contenido de este ZIP. Sube `index.html`, `app.js`, `styles.css`, `sw.js`, el manifiesto, iconos y la carpeta `assets` directamente a la raíz. No subas solo el ZIP ni una carpeta contenedora.
-4. Confirma los cambios en la rama `main`. GitHub Pages seguirá publicando desde `main` y `/(root)`.
-5. En cada teléfono, abre el mismo enlace del sitio con Internet y espera a que cargue v1.2. Si sigue apareciendo v1.1, cierra completamente la PWA y vuelve a abrirla. El service worker usa una caché nueva para descargar la actualización.
-6. Revisa inventario, cantidades y fotografías. No borres los datos del navegador ni desinstales la aplicación antes de comprobarlos.
+El ZIP incluye firebase-config.js vacío. Debes completar sus valores y configurar Firebase siguiendo CONFIGURAR_FIREBASE.md. Sin esa configuración, la aplicación funciona localmente, pero no puede iniciar sesión ni sincronizar. No vincules una cuenta de facturación si el proyecto debe permanecer en el plan gratuito Spark.
 
-**La actualización de archivos no borra IndexedDB.** La aplicación consolida duplicados equivalentes al iniciar: une sus bobinas individuales sin perder fechas, pesos, precios, proveedores ni consumos. Mantiene los datos separados en cada navegador/dispositivo.
+## Actualizar desde v1.2
 
-## Instalación
+1. Guarda antes una copia JSON desde la v1.2, como protección adicional.
+2. Descomprime el ZIP y configura Firebase.
+3. Sustituye los archivos de la raíz publicada en GitHub Pages por los archivos del ZIP; conserva la base de datos de Firebase y no borres los datos del navegador.
+4. Abre la misma URL con Internet. La v1.3 mantiene IndexedDB y el service worker cambia a una caché nueva.
+5. Prueba primero con datos de prueba. Al conectar por primera vez ofrece conservar/subir o descargar los datos existentes; revisa la selección antes de aceptar.
 
-- **Android:** abre el enlace con Chrome o Samsung Internet y usa el menú del navegador → **Instalar aplicación** o **Añadir a pantalla de inicio**.
-- **iPhone:** abre el enlace en Safari → **Compartir** → **Añadir a pantalla de inicio**.
-- Para descargar los archivos offline, abre la aplicación con Internet al menos una vez antes de usar el modo avión.
+## Instalación y seguridad
 
-## PDF y respaldos
+- Android: abre el enlace con Chrome o Samsung Internet y elige Instalar/Añadir a pantalla de inicio.
+- iPhone: abre el enlace con Safari y elige Compartir → Añadir a pantalla de inicio.
+- Abre una vez con Internet para guardar los recursos offline. El inicio de sesión y la sincronización necesitan Internet.
+- No publiques respaldos JSON ni claves privadas en GitHub. El identificador de cliente OAuth y la configuración web Firebase son públicos; las reglas de base de datos protegen los datos por UID.
+- El plan Spark tiene cuotas. Si se exceden, Firebase puede detener el producto hasta el siguiente ciclo mensual. Consulta CONFIGURAR_FIREBASE.md.
 
-**Exportar inventario PDF** abre el diálogo de impresión del navegador. Elige **Guardar como PDF** (Android/Windows/Chrome) o la opción PDF de Compartir/Imprimir disponible en Safari. El informe se genera localmente, también sin conexión, y muestra resumen, referencias agrupadas por marca, fotos o bobinas ilustradas y detalle de cada bobina.
+## Estado de verificación
 
-El respaldo **JSON** es el formato que conserva los datos editables, incluidas fotos, plantillas, proveedores y catálogos. Debido a las fotografías puede ocupar más espacio; la aplicación reduce las imágenes antes de guardarlas. Guarda el JSON fuera del dispositivo (por ejemplo, en Drive) y no lo subas al repositorio público.
-
-## Protección de datos y límites
-
-- El inventario no se sincroniza automáticamente entre dispositivos. Cada teléfono conserva su propia base local.
-- Borrar los datos del navegador puede borrar también el inventario. Exporta copias JSON con regularidad y antes de cambiar de teléfono.
-- No compartas públicamente el respaldo JSON: contiene fotos y datos personales del inventario.
-- La lectura OCR permanece local y depende del idioma y la calidad de la etiqueta; revisa los campos reconocidos.
-- La exportación PDF utiliza la impresión integrada en el sistema. En iPhone, el destino PDF se elige desde la hoja de impresión/compartir de Safari.
-
-## Comprobaciones de esta entrega
-
-Se validan sintaxis JS, manifest, recursos offline, migración y agrupación, cálculos de peso/precio, importación JSON anterior, controles de rollo, selector de color y generación de HTML de impresión. Esta versión sigue siendo Beta hasta que se pruebe en Samsung Internet/Chrome y Safari de iPhone.
-
-## Archivos
-
-`index.html`, `app.js`, `styles.css`, `manifest.webmanifest`, `sw.js`, iconos y `assets/` (Tesseract.js, modelo OCR local y licencias).
+Código, configuración, reglas, service worker y rutas de almacenamiento revisados. El flujo real de Google/Firebase requiere completar la configuración del propietario y probarse con dos cuentas; no se puede validar sin un proyecto Firebase configurado. Sigue siendo Beta hasta completar pruebas en Chrome/Samsung Internet y Safari/iPhone.
