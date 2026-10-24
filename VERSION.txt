@@ -1,8 +1,8 @@
-Filamentos 3D — v1.3.1 Beta
-Base: v1.3 Beta
-Corrección: lectura de config Firebase/OAuth y diagnóstico de campos faltantes
-Datos locales: IndexedDB existente preservado y particionado por perfil Google
-Sincronización: Firebase Authentication y Realtime Database mediante REST
-Caché offline: filamentos-v1.3.1-beta-1
-Paquete: archivos en la raíz, preparado para GitHub Pages / (root)
-Configuración: conservar firebase-config.js ya completado; revisar CONFIGURAR_FIREBASE.md
+Filamentos 3D — v2.0 Beta
+Base: Alfa v1.3.2 (interfaz multilingüe y Firebase existente)
+Novedad: historial local de errores de JavaScript, red, Google y Firebase
+Diagnósticos: navegador, estado online, método/servidor HTTP; sin tokens
+Reintentos: solo GET de Firebase ante fallos transitorios; escrituras no se repiten
+Inventario: conserva IndexedDB existente; el registro usa una base local separada
+Sincronización: cuentas Google separadas y Firebase Realtime Database mediante REST
+Caché offline: filamentos-v2.0-beta-1

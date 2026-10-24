@@ -1,4 +1,4 @@
-# Configuración de Firebase — Filamentos 3D v1.3.1 Beta
+# Configuración de Firebase — Filamentos 3D v2.0 Beta
 
 Esta versión usa Google para iniciar sesión y Firebase Realtime Database para sincronizar mediante sus APIs REST; no carga el SDK JavaScript de Firebase. No usa Google Drive API. Cada cuenta solo puede acceder a /users/<su-UID>; las reglas de seguridad están en firebase-database.rules.json.
 
@@ -29,26 +29,14 @@ El apiKey, el appId y el identificador OAuth de cliente web son identificadores 
 
 Para uso personal con pocas personas conocidas, se puede empezar en modo de pruebas. Google puede mostrar una pantalla de advertencia y limitar quién inicia sesión. La publicación o verificación puede requerirse si se quiere quitar esa restricción o abrir el acceso a otros usuarios; no es necesaria para probar con los usuarios añadidos como testers. Revisa el estado y requisitos vigentes en Google Auth Platform antes de ampliarlo.
 
-## D. Publicar la corrección v1.3.1 Beta
+## D. Publicar Filamentos 3D v2.0 Beta
 
-1. Descomprime el ZIP. Antes de copiar archivos, conserva tu `firebase-config.js` actual ya configurado. La plantilla del ZIP viene vacía para no incluir credenciales de proyecto ajenas.
-2. Sustituye los archivos de la raíz de GitHub Pages por los del ZIP, pero conserva tu `firebase-config.js` con sus valores; si prefieres usar el del ZIP, pega en él los seis valores antes de publicarlo. No subas una carpeta contenedora.
-3. Conserva la base de datos local del navegador. No borres almacenamiento, cookies ni datos del sitio.
-4. Abre la URL con Internet y recarga la página. La caché de esta versión usa un identificador nuevo y solicita los archivos actualizados; la app carga primero el perfil local. Si la versión cloud coincide, no descarga el inventario ni las fotos.
-5. Si falta alguna propiedad, la franja de nube indicará el nombre exacto. La más fácil de pasar por alto es `googleClientId`, que debe ser el Client ID OAuth web.
-6. Pulsa **Conectar con Google** y selecciona una cuenta. Tras conectar, pulsa **Guardar en la nube** para publicar cambios y espera la confirmación. Los cambios locales no se suben automáticamente.
+1. Descomprime el ZIP y copia el contenido en la raíz del repositorio de GitHub Pages.
+2. El `firebase-config.js` incluido se conserva desde la Alfa. Si el archivo que ya está publicado contiene valores más recientes, conserva el publicado y reemplaza los demás archivos.
+3. No borres los datos del sitio en el navegador: el inventario existente sigue en IndexedDB. El registro de errores usa otra base local separada.
+4. Publica la actualización y abre la aplicación con Internet. El service worker tiene una caché nueva y precarga `diagnostics.js` junto con los recursos actuales.
+5. Para revisar un fallo en Apple, pulsa el botón ⚠ de la barra superior, reproduce la conexión y descarga el registro JSON desde **Historial de errores**.
 
-## E. Límites y funcionamiento
+## Diagnóstico en v2.0 Beta
 
-- En el plan Spark, Realtime Database incluye 1 GB almacenado, 10 GB de descargas al mes y hasta 100 conexiones simultáneas. Al superar la cuota gratuita, el producto puede quedar desactivado para el resto del mes; no vincules facturación si el proyecto debe permanecer sin coste.
-- Las fotos están comprimidas por la aplicación y se incluyen en el JSON sincronizado. Las copias históricas consumen espacio; se conservan cinco por cuenta por defecto, ajustable entre una y veinte. Solo se crea una copia al publicar cambios.
-- IndexedDB conserva el inventario y los cambios offline. La base de datos web de Firebase no sustituye esa cola local si se cierra la app sin conexión.
-- La sincronización al abrir consulta primero la revisión. Descarga el contenido completo solo si hay una versión nueva y no existen cambios locales pendientes.
-- Si dos dispositivos cambian datos distintos, se combinan. Si ambos cambiaron el mismo dato, la app pide elegir qué versión conservar en esos campos. El resto de cambios se mantiene.
-- Con la cuenta desconectada, el perfil local permanece en el dispositivo. Cambiar de cuenta abre el perfil separado de esa cuenta.
-- Las copias JSON manuales siguen siendo el respaldo independiente recomendado.
-- La sesión de Google puede requerir reconexión. El inicio de sesión necesita Internet; el inventario local sigue disponible sin conexión.
-
-## Pruebas antes de usar con el inventario principal
-
-Usa primero dos cuentas y datos de prueba: conectar cada cuenta, cambiar de cuenta en el mismo navegador, abrir la misma cuenta en dos dispositivos, guardar desde un dispositivo, sincronizar desde el otro, editar el mismo campo sin publicar para verificar el diálogo de conflicto, activar o desactivar historial, restaurar una versión y probar modo avión. Mantén el JSON de la v1.2 hasta completar la migración.
+El botón **Historial de errores** registra localmente eventos de red, Firebase y JavaScript. No se envían a Firebase. Puedes descargar un JSON desde el historial para compartirlo durante el diagnóstico. Los GET reintentan fallos temporales; las publicaciones no se reintentan automáticamente.
