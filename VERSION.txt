@@ -1,8 +1,8 @@
-Filamentos 3D — v2.0 Beta
+Filamentos 3D — v2.1 Beta
 Base: Alfa v1.3.2 (interfaz multilingüe y Firebase existente)
-Novedad: historial local de errores de JavaScript, red, Google y Firebase
+Novedad: publicación de inventario no se cancela si falla la limpieza del historial de copias
 Diagnósticos: navegador, estado online, método/servidor HTTP; sin tokens
-Reintentos: solo GET de Firebase ante fallos transitorios; escrituras no se repiten
+Reintentos: GET temporales; limpieza de copias no bloquea publicación confirmada
 Inventario: conserva IndexedDB existente; el registro usa una base local separada
 Sincronización: cuentas Google separadas y Firebase Realtime Database mediante REST
-Caché offline: filamentos-v2.0-beta-1
+Caché offline: filamentos-v2.1-beta-1

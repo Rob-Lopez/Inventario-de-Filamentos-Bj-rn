@@ -1,6 +1,10 @@
-# Filamentos 3D — v2.0 Beta
+# Filamentos 3D — v2.1 Beta
 
 PWA personal para iPhone, iPad, Mac, Android y Windows. Conserva el inventario IndexedDB, los perfiles separados por cuenta Google, la sincronización manual con Firebase, la interfaz ES/DE/EN, las fotografías, el OCR, los catálogos, las plantillas y la exportación PDF.
+
+## Sincronización y diagnóstico
+
+Si Safari no puede consultar el listado de copias antiguas, la aplicación registra el error y continúa con la publicación del inventario. La limpieza se vuelve a intentar en una publicación posterior.
 
 ## Historial de errores
 
