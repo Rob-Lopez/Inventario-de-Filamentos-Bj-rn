@@ -1,8 +1,8 @@
-Filamentos 3D — v2.1 Beta
+Filamentos 3D — v2.2 Beta
 Base: Alfa v1.3.2 (interfaz multilingüe y Firebase existente)
-Novedad: publicación de inventario no se cancela si falla la limpieza del historial de copias
+Novedad: fallback XMLHttpRequest en lecturas REST fallidas en Safari; la limpieza del historial no bloquea la publicación
 Diagnósticos: navegador, estado online, método/servidor HTTP; sin tokens
-Reintentos: GET temporales; limpieza de copias no bloquea publicación confirmada
+Reintentos: GET hasta tres veces; en Safari, XMLHttpRequest como alternativa de lectura tras fallo de fetch
 Inventario: conserva IndexedDB existente; el registro usa una base local separada
 Sincronización: cuentas Google separadas y Firebase Realtime Database mediante REST
-Caché offline: filamentos-v2.1-beta-1
+Caché offline: filamentos-v2.2-beta-1
