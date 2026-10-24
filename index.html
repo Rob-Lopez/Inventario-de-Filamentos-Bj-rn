@@ -19,7 +19,7 @@
     <div class="brand"><span class="brand-mark">F</span><div><strong>Filamentos 3D</strong><small>Inventario personal · v1.3.1 Beta</small></div></div>
     <div class="top-actions">
       <button class="icon-button" id="backupBtn" title="Copias de seguridad" aria-label="Copias de seguridad">⇧</button>
-      <button class="secondary-button" id="pdfBtn">▤ <span>Exportar inventario PDF</span></button><button class="primary-button" id="addBtn">＋ <span>Añadir filamento</span></button>
+      <button class="secondary-button" id="errorLogBtn" title="Generar PDF del registro de errores">⚠ Registro de errores</button><button class="secondary-button" id="clearErrorLogBtn" title="Borrar registro de errores">Borrar registro</button><button class="secondary-button" id="pdfBtn">▤ <span>Exportar inventario PDF</span></button><button class="primary-button" id="addBtn">＋ <span>Añadir filamento</span></button>
       <input id="importFile" type="file" accept="application/json,.json" hidden>
     </div>
   </header>
@@ -111,6 +111,7 @@
   <dialog id="managerDialog" class="modal backup-modal"><div class="modal-heading"><div><span class="eyebrow">AJUSTES LOCALES</span><h2 id="managerTitle">Gestionar</h2></div><button type="button" class="close-button" data-close="managerDialog" aria-label="Cerrar">×</button></div><div id="managerContent"></div></dialog>
   <div id="printArea" aria-hidden="true"></div><div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="firebase-config.js"></script>
+  <script src="error-log.js"></script>
   <script src="cloud.js"></script>
   <script src="assets/tesseract.min.js"></script>
   <script src="app.js"></script>
