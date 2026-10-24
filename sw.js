@@ -1,4 +1,4 @@
-const VERSION='filamentos-v1.3.1-beta-diagnostico-registro-3';
+const VERSION='filamentos-v1.3.1-beta-safari-diagnostico-5';
 const SHELL=['./','./index.html','./styles.css','./app.js','./cloud.js','./error-log.js','./firebase-config.js','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./assets/tesseract.min.js','./assets/worker.min.js','./assets/tesseract-core.wasm.js','./assets/tesseract-core-simd.wasm.js','./assets/tesseract-core-lstm.wasm.js','./assets/tesseract-core-simd-lstm.wasm.js','./assets/tessdata/eng.traineddata'];
 self.addEventListener('install',event=>{const fresh=SHELL.map(path=>new Request(new URL(path,self.registration.scope).href,{cache:'reload'}));event.waitUntil(caches.open(VERSION).then(cache=>cache.addAll(fresh)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('filamentos-')&&k!==VERSION).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
