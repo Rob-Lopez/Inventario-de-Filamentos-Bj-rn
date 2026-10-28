@@ -12,23 +12,23 @@
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icon-192.png">
   <link rel="stylesheet" href="styles.css">
-  <title>Inventario Filamentos 3D · v2.2 Beta</title>
+  <title>Inventario Filamentos 3D · B 3.0 Beta</title>
 </head>
 <body>
   <header class="topbar">
-    <div class="brand"><span class="brand-mark">F</span><div><strong>Filamentos 3D</strong><small>Inventario personal · v2.2 Beta</small></div></div>
+    <div class="brand"><span class="brand-mark">F</span><div><strong>Filamentos 3D</strong><small>Inventario personal · B 3.0 Beta</small></div></div>
     <div class="top-actions">
       <label class="language-picker" aria-label="Idioma"><span aria-hidden="true">🌐</span><select id="languageSelect" aria-label="Idioma"><option value="es">Español</option><option value="de">Deutsch</option><option value="en">English</option></select></label>
       <button class="icon-button" id="backupBtn" title="Copias de seguridad" aria-label="Copias de seguridad">⇧</button>
       <button class="icon-button error-history-button" id="errorHistoryBtn" title="Historial de errores" aria-label="Historial de errores">⚠</button>
-      <button class="secondary-button" id="pdfBtn">▤ <span>Exportar inventario PDF</span></button><button class="primary-button" id="addBtn">＋ <span>Añadir filamento</span></button>
+      <button class="secondary-button" id="pdfBtn">▤ <span>Exportar inventario PDF</span></button><button class="primary-button" id="addBtn">＋ <span>Añadir filamento</span></button><button class="secondary-button" id="simpleViewBtn" type="button">Vista simplificada</button><button class="primary-button" id="simpleRefreshBtn" type="button" hidden>Actualizar</button>
       <input id="importFile" type="file" accept="application/json,.json" hidden>
     </div>
   </header>
 
   <section class="cloud-strip" aria-label="Sincronización en la nube">
     <div class="cloud-state"><span id="cloudDot" class="cloud-dot"></span><div><strong id="cloudStatus">Solo en este dispositivo</strong><small id="cloudDetail">Conecta una cuenta Google para sincronizar.</small></div></div>
-    <div class="cloud-actions"><button class="secondary-button" id="cloudConnectBtn">Conectar con Google</button><button class="primary-button" id="cloudPublishBtn" disabled>Guardar en la nube</button><button class="secondary-button" id="cloudHistoryBtn" hidden>Historial</button></div>
+    <div class="cloud-actions"><label class="device-mode-control">Modo de este dispositivo<select id="deviceModeSelect"><option value="master">Master · puede editar</option><option value="readonly">Solo visualización</option></select></label><button class="secondary-button" id="cloudConnectBtn">Conectar con Google</button><button class="secondary-button" id="cloudRefreshBtn" disabled>Actualizar desde la nube</button><button class="primary-button" id="cloudPublishBtn" disabled>Guardar en la nube</button><button class="secondary-button" id="cloudHistoryBtn" hidden>Historial</button></div>
   </section>
 
   <main class="page">
@@ -65,11 +65,11 @@
           <div class="form-grid">
             <label>Marca<input id="brand" placeholder="eSUN" autocomplete="off" list="brandOptions"><datalist id="brandOptions"></datalist></label>
             <label>Nombre comercial<input id="name" placeholder="PLA+" autocomplete="off" list="nameOptions"><datalist id="nameOptions"></datalist><datalist id="supplierOptions"></datalist></label>
-            <label>Material<input id="material" list="materialOptions" value="PLA" autocomplete="off"><datalist id="materialOptions"></datalist></label>
+            <label>Material<input id="material" list="materialOptions" autocomplete="off"><datalist id="materialOptions"></datalist></label>
             <label>Color<input id="colorName" placeholder="Negro" autocomplete="off" list="colorOptions"><datalist id="colorOptions"></datalist></label>
-            <label>Acabado visual<select id="finish"><option value="normal">Normal</option><option value="metallic">Metálico</option><option value="glossy">Brillante</option><option value="matte">Mate</option><option value="transparent">Transparente</option><option value="multicolor">Multicolor</option></select></label>
-            <label>Nombre personalizado (opcional)<input id="customFinishName" placeholder="Seda, madera, cambio de color…"></label><label>Efecto visual aproximado<select id="customFinishEffect"><option value="normal">Normal</option><option value="metallic">Metálico</option><option value="glossy">Brillante</option><option value="matte">Mate</option><option value="transparent">Transparente</option><option value="multicolor">Multicolor</option></select></label>
-            <label class="color-picker-label">Color visual<div class="color-line"><input id="colorHex" type="color" value="#3478D4" aria-label="Selector de color"><input id="colorText" type="text" maxlength="7" value="#3478D4" aria-label="Código hexadecimal"></div><div class="hsl-controls"><label>Tono <input id="hueRange" type="range" min="0" max="360" value="210"></label><label>Saturación <input id="satRange" type="range" min="0" max="100" value="65"></label><label>Luminosidad <input id="lightRange" type="range" min="0" max="100" value="52"></label></div><div class="palette-heading"><strong>Colores sugeridos</strong><button type="button" id="saveColorBtn" class="palette-save">☆ Guardar color favorito</button></div><div id="palette" class="palette"></div><div class="color-preview"><span>Vista previa</span><div id="formPreview"></div></div></label>
+            <label>Acabado visual<select id="finish"><option value="">Sin especificar</option><option value="normal">Normal</option><option value="metallic">Metálico</option><option value="glossy">Brillante</option><option value="matte">Mate</option><option value="transparent">Transparente</option><option value="multicolor">Multicolor</option></select></label>
+            <label>Nombre personalizado (opcional)<input id="customFinishName" placeholder="Seda, madera, cambio de color…"></label><label>Efecto visual aproximado<select id="customFinishEffect"><option value="">Sin especificar</option><option value="normal">Normal</option><option value="metallic">Metálico</option><option value="glossy">Brillante</option><option value="matte">Mate</option><option value="transparent">Transparente</option><option value="multicolor">Multicolor</option></select></label>
+            <label class="color-picker-label">Color visual<span class="check-label color-unset"><input id="colorUnset" type="checkbox" checked> Sin especificar</span><div class="color-line"><input id="colorHex" type="color" value="#3478D4" aria-label="Selector de color"><input id="colorText" type="text" maxlength="7" value="#3478D4" aria-label="Código hexadecimal"></div><div class="hsl-controls"><label>Tono <input id="hueRange" type="range" min="0" max="360" value="210"></label><label>Saturación <input id="satRange" type="range" min="0" max="100" value="65"></label><label>Luminosidad <input id="lightRange" type="range" min="0" max="100" value="52"></label></div><div class="palette-heading"><strong>Colores sugeridos</strong><button type="button" id="saveColorBtn" class="palette-save">☆ Guardar color favorito</button></div><div id="palette" class="palette"></div><div class="color-preview"><span>Vista previa</span><div id="formPreview"></div></div></label>
             <label>Temperatura extrusor (°C)<div class="range-pair"><input id="nozzleMin" type="number" placeholder="Mín."><input id="nozzleMax" type="number" placeholder="Máx."></div></label>
             <label>Temperatura cama (°C)<div class="range-pair"><input id="bedMin" type="number" placeholder="Mín."><input id="bedMax" type="number" placeholder="Máx."></div></label>
           </div>
@@ -111,7 +111,7 @@
     <p class="muted tiny">Los datos locales se guardan en este dispositivo. Conecta Google para sincronizarlos; conserva también copias JSON fuera del navegador.</p>
   </dialog>
   <dialog id="managerDialog" class="modal backup-modal"><div class="modal-heading"><div><span class="eyebrow">AJUSTES LOCALES</span><h2 id="managerTitle">Gestionar</h2></div><button type="button" class="close-button" data-close="managerDialog" aria-label="Cerrar">×</button></div><div id="managerContent"></div></dialog>
-  <dialog id="errorHistoryDialog" class="modal wide-modal error-history-dialog"><div class="error-history-wrap"><div class="modal-heading"><div><span class="eyebrow">FILAMENTOS 3D · V2.1</span><h2>Historial de errores</h2></div><button type="button" class="close-button" id="errorLogClose" aria-label="Cerrar">×</button></div><p class="muted">El registro se guarda solo en este dispositivo y no se sincroniza con Firebase.</p><div class="error-log-toolbar"><strong id="errorHistoryCount">0 errores</strong><div><button type="button" class="secondary-button" id="errorLogExport">Descargar registro</button><button type="button" class="secondary-button" id="errorLogClear">Borrar registro</button></div></div><ol id="errorLogList" class="error-log-list"></ol></div></dialog>
+  <dialog id="errorHistoryDialog" class="modal wide-modal error-history-dialog"><div class="error-history-wrap"><div class="modal-heading"><div><span class="eyebrow">FILAMENTOS 3D · B 3.0</span><h2>Historial de errores</h2></div><button type="button" class="close-button" id="errorLogClose" aria-label="Cerrar">×</button></div><p class="muted">El registro se guarda solo en este dispositivo y no se sincroniza con Firebase.</p><div class="error-log-toolbar"><strong id="errorHistoryCount">0 errores</strong><div><button type="button" class="secondary-button" id="errorLogExport">Descargar registro</button><button type="button" class="secondary-button" id="errorLogClear">Borrar registro</button></div></div><ol id="errorLogList" class="error-log-list"></ol></div></dialog>
   <div id="printArea" aria-hidden="true"></div><div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="firebase-config.js"></script>
   <script src="i18n.js"></script>

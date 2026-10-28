@@ -1,7 +1,7 @@
-/* Filamentos 3D v2.2 Beta — registro local de errores, separado del inventario. */
+/* Filamentos 3D B 3.0 Beta — registro local de errores, separado del inventario. */
 (()=>{
 'use strict';
-const DB='filamentos3d-error-history',STORE='errors',MAX=300,APP_VERSION='v2.2 Beta';
+const DB='filamentos3d-error-history',STORE='errors',MAX=300,APP_VERSION='B 3.0 Beta';
 const $=id=>document.getElementById(id),tr=s=>window.FilamentI18n?.t(s)||s;
 let dbPromise=null;
 function safe(value){let s=typeof value==='string'?value:value?.stack||value?.message||(()=>{try{return JSON.stringify(value);}catch(_){return String(value);}})();return String(s||'Error desconocido').replace(/([?&](?:auth|key|id_token|access_token|refresh_token|credential)=)[^&\s]+/gi,'$1[oculto]').replace(/(Bearer\s+)[A-Za-z0-9._~-]+/gi,'$1[oculto]').slice(0,5000);}

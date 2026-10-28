@@ -1,4 +1,4 @@
-# Configuración de Firebase — Filamentos 3D v2.1 Beta
+# Configuración de Firebase — Filamentos 3D B 3.0 Beta
 
 Esta versión usa Google para iniciar sesión y Firebase Realtime Database para sincronizar mediante sus APIs REST; no carga el SDK JavaScript de Firebase. No usa Google Drive API. Cada cuenta solo puede acceder a /users/<su-UID>; las reglas de seguridad están en firebase-database.rules.json.
 
@@ -29,7 +29,7 @@ El apiKey, el appId y el identificador OAuth de cliente web son identificadores 
 
 Para uso personal con pocas personas conocidas, se puede empezar en modo de pruebas. Google puede mostrar una pantalla de advertencia y limitar quién inicia sesión. La publicación o verificación puede requerirse si se quiere quitar esa restricción o abrir el acceso a otros usuarios; no es necesaria para probar con los usuarios añadidos como testers. Revisa el estado y requisitos vigentes en Google Auth Platform antes de ampliarlo.
 
-## D. Publicar Filamentos 3D v2.1 Beta
+## D. Publicar Filamentos 3D B 3.0 Beta
 
 1. Descomprime el ZIP y copia el contenido en la raíz del repositorio de GitHub Pages.
 2. El `firebase-config.js` incluido se conserva desde la Alfa. Si el archivo que ya está publicado contiene valores más recientes, conserva el publicado y reemplaza los demás archivos.
@@ -37,7 +37,7 @@ Para uso personal con pocas personas conocidas, se puede empezar en modo de prue
 4. Publica la actualización y abre la aplicación con Internet. El service worker tiene una caché nueva y precarga `diagnostics.js` junto con los recursos actuales.
 5. Para revisar un fallo en Apple, pulsa el botón ⚠ de la barra superior, reproduce la conexión y descarga el registro JSON desde **Historial de errores**.
 
-## Diagnóstico en v2.1 Beta
+## Diagnóstico en B 3.0 Beta
 
 Si Safari no puede consultar el listado de copias antiguas durante una publicación, la aplicación registra ese fallo y continúa con el guardado principal. La limpieza de copias se vuelve a intentar después.
 

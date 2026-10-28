@@ -1,10 +1,18 @@
-# Filamentos 3D — v2.2 Beta
+# Filamentos 3D — B 3.0 Beta
 
 PWA personal para iPhone, iPad, Mac, Android y Windows. Conserva el inventario IndexedDB, los perfiles separados por cuenta Google, la sincronización manual con Firebase, la interfaz ES/DE/EN, las fotografías, el OCR, los catálogos, las plantillas y la exportación PDF.
 
 ## Sincronización y diagnóstico
 
 En Safari, las lecturas REST de Firebase reintentan hasta tres veces si falla fetch. Si persiste un fallo de red, se intenta la misma lectura mediante XMLHttpRequest. Esta alternativa se usa solo en Safari; Android y Windows conservan su ruta habitual. Si falla la lectura del listado de copias antiguas, el error se registra y la publicación del inventario continúa.
+
+## Novedades B 3.0
+
+- Actualización manual desde la nube, con opciones seguras cuando hay cambios locales pendientes.
+- Modo Solo visualización por defecto y modo Master activado expresamente en el dispositivo autorizado; el ajuste se guarda por dispositivo. La protección local bloquea las acciones de edición y publicación en el dispositivo marcado como Solo visualización; el selector no impone un bloqueo global entre dispositivos.
+- Vista simplificada con lista de filamentos, filtros y accesos para volver a la vista completa o actualizar desde Firebase.
+- Se pueden guardar fichas de filamento vacías. Se asigna fecha de creación automáticamente; al añadir un rollo, su fecha de compra empieza en hoy y se puede cambiar.
+- La ficha vacía puede editarse luego y permanece separada de otras fichas vacías.
 
 ## Historial de errores
 
@@ -19,4 +27,4 @@ Las lecturas GET de Firebase reintentan hasta tres veces ante fallos de red tran
 3. Publica y abre la aplicación con Internet. La caché nueva del service worker actualiza los recursos.
 4. En iPhone, iPad y Mac, abre **Historial de errores** después de reproducir el fallo y descarga el registro JSON para revisar los eventos.
 
-La app carga el inventario local antes de iniciar la comprobación de Firebase. El registro de errores usa una base IndexedDB separada.
+El modo del dispositivo y la vista simplificada se guardan localmente; no se sincronizan con las otras cuentas o dispositivos. La app carga el inventario local antes de iniciar la comprobación de Firebase. El registro de errores usa una base IndexedDB separada.

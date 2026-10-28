@@ -42,3 +42,22 @@
 .error-log-empty{text-align:center;color:var(--muted);padding:28px 8px;border:1px dashed var(--line);border-radius:10px}
 @media(max-width:600px){.topbar{padding:0 8px;gap:5px}.brand{gap:6px}.brand>div{width:72px;min-width:0}.brand-mark{width:34px;height:34px;flex:0 0 34px}.brand strong{font-size:12px;overflow-wrap:anywhere}.brand small{font-size:9px;overflow-wrap:anywhere}.top-actions{gap:4px;flex:0 0 auto}.language-picker{padding:0 4px}.language-picker select{max-width:52px;font-size:11px}.top-actions #backupBtn,.top-actions #errorHistoryBtn{width:34px;min-width:34px;height:36px;min-height:36px;font-size:17px}.top-actions #pdfBtn,.top-actions #addBtn{width:34px;min-width:34px;height:36px;min-height:36px;padding:0}.error-history-wrap{padding:16px}.error-log-toolbar{align-items:flex-start;flex-direction:column}.error-log-toolbar>div{width:100%}.error-log-toolbar button{flex:1}}
 @media(max-width:370px){.brand>div{width:54px}.brand strong{font-size:10px}.brand small{font-size:8px}.language-picker select{max-width:40px}}
+
+/* B 3.0: per-device role and simplified inventory view */
+.device-mode-control{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:11px;white-space:nowrap}
+.device-mode-control select{border:1px solid var(--line);border-radius:8px;background:#f7f8fb;padding:7px 9px;color:#25334b;font:inherit}
+#simpleViewBtn,#simpleRefreshBtn{white-space:nowrap}
+#simpleRefreshBtn[hidden]{display:none!important}
+.device-readonly #cloudPublishBtn,.device-readonly #addBtn,.device-readonly #importBtn,.device-readonly #templatesBtn,.device-readonly #catalogsBtn,.device-readonly .qty-control button,.device-readonly .detail-actions button,.device-readonly .remove-roll,.device-readonly #addRollBtn,.device-readonly #saveColorBtn,.device-readonly .empty-state button,.device-readonly #errorLogClear{display:none!important}
+.device-readonly .device-mode-control select{border-color:#e0a638;background:#fff8e8}
+.state-pill.no-rolls{color:#6d7685;background:#f0f2f5}
+.color-unset{display:flex;align-items:center;gap:6px;margin:7px 0;color:var(--muted);font-size:11px}
+.color-picker-label input:disabled{opacity:.45}
+.simple-view #stats,.simple-view .cloud-strip,.simple-view .privacy-note,.simple-view .panel-heading,.simple-view #gridView{display:none!important}
+.simple-view .top-actions>*{display:none!important}
+.simple-view .top-actions #simpleViewBtn,.simple-view .top-actions #simpleRefreshBtn{display:inline-flex!important}
+.simple-view .page{padding-top:10px}
+.simple-view .inventory-panel{margin-top:0}
+.simple-view .filters{margin-top:0}
+.simple-view #listView{display:block!important}
+@media(max-width:700px){.cloud-actions{flex-wrap:wrap}.device-mode-control{justify-content:space-between;grid-column:1/-1;width:100%}.device-mode-control select{flex:1}.simple-view .topbar{justify-content:space-between}.simple-view .brand>div{width:auto}.simple-view .top-actions{flex:0 0 auto}.simple-view .top-actions #simpleViewBtn{width:auto;min-width:0;padding:0 10px;font-size:11px}.simple-view .top-actions #simpleRefreshBtn{width:auto;min-width:0;padding:0 10px;font-size:11px}}
