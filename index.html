@@ -12,16 +12,16 @@
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icon-192.png">
   <link rel="stylesheet" href="styles.css">
-  <title>Inventario Filamentos 3D · B 3.0 Beta</title>
+  <title>Inventario Filamentos 3D · v3.1 Beta</title>
 </head>
 <body>
   <header class="topbar">
-    <div class="brand"><span class="brand-mark">F</span><div><strong>Filamentos 3D</strong><small>Inventario personal · B 3.0 Beta</small></div></div>
+    <div class="brand"><span class="brand-mark">F</span><div><strong>Filamentos 3D</strong><small>Inventario personal · v3.1 Beta</small></div></div>
     <div class="top-actions">
       <label class="language-picker" aria-label="Idioma"><span aria-hidden="true">🌐</span><select id="languageSelect" aria-label="Idioma"><option value="es">Español</option><option value="de">Deutsch</option><option value="en">English</option></select></label>
-      <button class="icon-button" id="backupBtn" title="Copias de seguridad" aria-label="Copias de seguridad">⇧</button>
+      <button class="secondary-button backup-button" id="backupBtn" title="Copia de seguridad" aria-label="Copia de seguridad">Copia de seguridad</button>
       <button class="icon-button error-history-button" id="errorHistoryBtn" title="Historial de errores" aria-label="Historial de errores">⚠</button>
-      <button class="secondary-button" id="pdfBtn">▤ <span>Exportar inventario PDF</span></button><button class="primary-button" id="addBtn">＋ <span>Añadir filamento</span></button><button class="secondary-button" id="simpleViewBtn" type="button">Vista simplificada</button><button class="primary-button" id="simpleRefreshBtn" type="button" hidden>Actualizar</button>
+      <button class="secondary-button" id="pdfBtn">▤ <span>Exportar inventario a PDF</span></button><button class="primary-button" id="addBtn">＋ <span>Añadir filamento</span></button><button class="secondary-button" id="simpleViewBtn" type="button">Vista simplificada</button><button class="primary-button" id="simpleRefreshBtn" type="button" hidden>Actualizar</button>
       <input id="importFile" type="file" accept="application/json,.json" hidden>
     </div>
   </header>
@@ -111,7 +111,8 @@
     <p class="muted tiny">Los datos locales se guardan en este dispositivo. Conecta Google para sincronizarlos; conserva también copias JSON fuera del navegador.</p>
   </dialog>
   <dialog id="managerDialog" class="modal backup-modal"><div class="modal-heading"><div><span class="eyebrow">AJUSTES LOCALES</span><h2 id="managerTitle">Gestionar</h2></div><button type="button" class="close-button" data-close="managerDialog" aria-label="Cerrar">×</button></div><div id="managerContent"></div></dialog>
-  <dialog id="errorHistoryDialog" class="modal wide-modal error-history-dialog"><div class="error-history-wrap"><div class="modal-heading"><div><span class="eyebrow">FILAMENTOS 3D · B 3.0</span><h2>Historial de errores</h2></div><button type="button" class="close-button" id="errorLogClose" aria-label="Cerrar">×</button></div><p class="muted">El registro se guarda solo en este dispositivo y no se sincroniza con Firebase.</p><div class="error-log-toolbar"><strong id="errorHistoryCount">0 errores</strong><div><button type="button" class="secondary-button" id="errorLogExport">Descargar registro</button><button type="button" class="secondary-button" id="errorLogClear">Borrar registro</button></div></div><ol id="errorLogList" class="error-log-list"></ol></div></dialog>
+  <dialog id="errorHistoryDialog" class="modal wide-modal error-history-dialog"><div class="error-history-wrap"><div class="modal-heading"><div><span class="eyebrow">FILAMENTOS 3D · v3.1</span><h2>Historial de errores</h2></div><button type="button" class="close-button" id="errorLogClose" aria-label="Cerrar">×</button></div><p class="muted">El registro se guarda solo en este dispositivo y no se sincroniza con Firebase.</p><div class="error-log-toolbar"><strong id="errorHistoryCount">0 errores</strong><div><button type="button" class="secondary-button" id="errorLogExport">Descargar registro</button><button type="button" class="secondary-button" id="errorLogClear">Borrar registro</button></div></div><ol id="errorLogList" class="error-log-list"></ol></div></dialog>
+  <dialog id="actionDialog" class="modal action-dialog"><div class="action-dialog-inner"><div class="modal-heading"><div><span class="eyebrow">FILAMENTOS 3D</span><h2 id="actionDialogTitle">Elige una opción</h2></div><button type="button" class="close-button" id="actionDialogClose" aria-label="Cerrar">×</button></div><p id="actionDialogMessage" class="muted"></p><div id="actionDialogChoices" class="action-dialog-choices"></div></div></dialog>
   <div id="printArea" aria-hidden="true"></div><div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="firebase-config.js"></script>
   <script src="i18n.js"></script>

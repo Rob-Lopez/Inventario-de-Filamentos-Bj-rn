@@ -1,4 +1,4 @@
-# Filamentos 3D — B 3.0 Beta
+# Filamentos 3D — v3.1 Beta
 
 PWA personal para iPhone, iPad, Mac, Android y Windows. Conserva el inventario IndexedDB, los perfiles separados por cuenta Google, la sincronización manual con Firebase, la interfaz ES/DE/EN, las fotografías, el OCR, los catálogos, las plantillas y la exportación PDF.
 
@@ -6,7 +6,7 @@ PWA personal para iPhone, iPad, Mac, Android y Windows. Conserva el inventario I
 
 En Safari, las lecturas REST de Firebase reintentan hasta tres veces si falla fetch. Si persiste un fallo de red, se intenta la misma lectura mediante XMLHttpRequest. Esta alternativa se usa solo en Safari; Android y Windows conservan su ruta habitual. Si falla la lectura del listado de copias antiguas, el error se registra y la publicación del inventario continúa.
 
-## Novedades B 3.0
+## Novedades v3.1
 
 - Actualización manual desde la nube, con opciones seguras cuando hay cambios locales pendientes.
 - Modo Solo visualización por defecto y modo Master activado expresamente en el dispositivo autorizado; el ajuste se guarda por dispositivo. La protección local bloquea las acciones de edición y publicación en el dispositivo marcado como Solo visualización; el selector no impone un bloqueo global entre dispositivos.
@@ -28,3 +28,6 @@ Las lecturas GET de Firebase reintentan hasta tres veces ante fallos de red tran
 4. En iPhone, iPad y Mac, abre **Historial de errores** después de reproducir el fallo y descarga el registro JSON para revisar los eventos.
 
 El modo del dispositivo y la vista simplificada se guardan localmente; no se sincronizan con las otras cuentas o dispositivos. La app carga el inventario local antes de iniciar la comprobación de Firebase. El registro de errores usa una base IndexedDB separada.
+
+## v3.1
+Los menús de sincronización y del historial ahora usan opciones pulsables, sin pedir escribir números o letras. Se actualizaron los colores de los botones y el botón de copia de seguridad muestra su nombre.
