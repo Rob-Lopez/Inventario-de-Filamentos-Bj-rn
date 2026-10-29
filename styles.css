@@ -53,13 +53,14 @@
 .state-pill.no-rolls{color:#6d7685;background:#f0f2f5}
 .color-unset{display:flex;align-items:center;gap:6px;margin:7px 0;color:var(--muted);font-size:11px}
 .color-picker-label input:disabled{opacity:.45}
-.simple-view #stats,.simple-view .cloud-strip,.simple-view .privacy-note,.simple-view .panel-heading,.simple-view #gridView{display:none!important}
+.simple-view #stats,.simple-view .cloud-strip,.simple-view .privacy-note{display:none!important}
 .simple-view .top-actions>*{display:none!important}
 .simple-view .top-actions #simpleViewBtn,.simple-view .top-actions #simpleRefreshBtn{display:inline-flex!important}
 .simple-view .page{padding-top:10px}
 .simple-view .inventory-panel{margin-top:0}
 .simple-view .filters{margin-top:0}
-.simple-view #listView{display:block!important}
+.simple-view .panel-heading{display:flex!important;justify-content:flex-end;margin-bottom:10px}
+.simple-view .panel-heading>div:first-child{display:none!important}
 @media(max-width:700px){.cloud-actions{flex-wrap:wrap}.device-mode-control{justify-content:space-between;grid-column:1/-1;width:100%}.device-mode-control select{flex:1}.simple-view .topbar{justify-content:space-between}.simple-view .brand>div{width:auto}.simple-view .top-actions{flex:0 0 auto}.simple-view .top-actions #simpleViewBtn{width:auto;min-width:0;padding:0 10px;font-size:11px}.simple-view .top-actions #simpleRefreshBtn{width:auto;min-width:0;padding:0 10px;font-size:11px}}
 
 /* v3.1: colores solicitados y diálogos con opciones pulsables */

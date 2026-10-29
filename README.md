@@ -8,9 +8,10 @@ En Safari, las lecturas REST de Firebase reintentan hasta tres veces si falla fe
 
 ## Novedades v3.1
 
-- Actualización manual desde la nube, con opciones seguras cuando hay cambios locales pendientes.
+- Actualización manual desde la nube, con opciones claras cuando hay cambios locales pendientes; no combina inventarios. El dispositivo Master vuelve a permitir editar y guardar.
 - Modo Solo visualización por defecto y modo Master activado expresamente en el dispositivo autorizado; el ajuste se guarda por dispositivo. La protección local bloquea las acciones de edición y publicación en el dispositivo marcado como Solo visualización; el selector no impone un bloqueo global entre dispositivos.
-- Vista simplificada con lista de filamentos, filtros y accesos para volver a la vista completa o actualizar desde Firebase.
+- Vista simplificada con filtros y selector Lista/Cuadrícula, además de accesos para volver a la vista completa o actualizar desde Firebase.
+- El historial automático conserva como máximo las 20 copias más recientes. Cada copia se identifica por fecha y cantidad de filamentos; no hay selector de retención ni opción de combinar inventarios.
 - Se pueden guardar fichas de filamento vacías. Se asigna fecha de creación automáticamente; al añadir un rollo, su fecha de compra empieza en hoy y se puede cambiar.
 - La ficha vacía puede editarse luego y permanece separada de otras fichas vacías.
 
