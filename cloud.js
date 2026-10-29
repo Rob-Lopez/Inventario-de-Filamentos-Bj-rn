@@ -1,4 +1,4 @@
-/* v3.1 Beta: Safari REST GET fallback + nonblocking history cleanup + local diagnostics + Google login + Firebase Realtime Database. IndexedDB remains the offline source of truth. */
+/* v3.1 Alfa: Safari REST GET fallback + nonblocking history cleanup + local diagnostics + Google login + Firebase Realtime Database. IndexedDB remains the offline source of truth. */
 (()=>{
 'use strict';
 function readFirebaseConfig(){let raw=window.FILAMENTS_FIREBASE_CONFIG||window.FIREBASE_CONFIG||window.firebaseConfig||null;try{if(!raw&&typeof firebaseConfig!=='undefined')raw=firebaseConfig;}catch(_){}raw=raw&&typeof raw==='object'?raw:{};return{apiKey:String(raw.apiKey||raw.api_key||'').trim(),databaseURL:String(raw.databaseURL||raw.databaseUrl||raw.database_url||'').trim(),googleClientId:String(raw.googleClientId||raw.google_client_id||raw.googleOAuthClientId||raw.oauthClientId||raw.oauthClientID||raw.clientId||raw.clientID||raw.client_id||'').trim(),authDomain:String(raw.authDomain||raw.auth_domain||'').trim(),projectId:String(raw.projectId||raw.project_id||'').trim(),appId:String(raw.appId||raw.app_id||'').trim()};}

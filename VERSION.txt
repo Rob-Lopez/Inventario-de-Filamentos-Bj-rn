@@ -1,7 +1,7 @@
-Filamentos 3D — v3.1 Beta
-Base: Filamentos 3D v2.2 Beta
-Novedades: actualización manual desde la nube; modo local Master/Solo visualización; vista simplificada; fichas vacías; fecha de creación automática y fecha de compra editable con valor inicial de hoy para cada nuevo rollo.
+Filamentos 3D — v3.1 Alfa
+Base: Filamentos 3D v3.1 Beta
+Novedad: diseño adaptable para celular; los controles superiores y de sincronización se ordenan en varias filas para evitar desplazamiento horizontal. La vista de computadora conserva su distribución.
+Se conservan todas las funciones y datos de la versión base, incluido el selector Lista/Cuadrícula y el ajuste de columnas también en Solo visualización.
 Firebase: se conserva REST, estructura de datos y aislamiento por UID.
 Preferencias Master/Solo visualización y vista simplificada: locales a cada dispositivo; no hay bloqueo global de otros dispositivos Master.
-PWA cache: filamentos-v3.1-beta-3
-Novedades v3.1: menús pulsables para sincronización e historial; colores diferenciados en acciones principales; botón rotulado «Copia de seguridad»; selector Lista/Cuadrícula disponible también en vista simplificada; modo Master corregido; historial fijo de 20 copias, identificadas por fecha y cantidad de filamentos; sin combinación de inventarios.
+PWA cache: filamentos-v3.1-alfa-1

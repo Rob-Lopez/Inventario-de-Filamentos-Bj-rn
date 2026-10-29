@@ -83,3 +83,41 @@
  .top-actions #backupBtn.backup-button{width:55px;min-width:55px;height:36px;min-height:36px;padding:3px 4px;font-size:9px;white-space:normal;line-height:1;display:flex;align-items:center;justify-content:center}
  .top-actions #pdfBtn{background:#f5cfcd;color:#111}
 }
+
+
+/* v3.1 Alfa: responsive controls for phones and narrow screens */
+@media(max-width:900px){
+ .topbar{
+  height:auto;min-height:0;padding:10px 12px;display:grid;grid-template-columns:minmax(0,1fr);gap:9px;
+ }
+ .brand{min-width:0}
+ .brand>div{width:auto!important;min-width:0}
+ .brand strong,.brand small{overflow-wrap:anywhere}
+ .top-actions{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:6px;width:100%;min-width:0;
+ }
+ .top-actions>*{width:100%;min-width:0;max-width:100%;justify-content:center;text-align:center;white-space:normal;overflow-wrap:anywhere;line-height:1.15}
+ .top-actions .language-picker{height:auto;min-height:40px;padding:4px 6px;gap:4px}
+ .top-actions .language-picker select{max-width:100%;min-width:0}
+ .top-actions #backupBtn.backup-button{width:100%;min-width:0;max-width:none;height:auto;min-height:40px;padding:5px 6px;font-size:10px;line-height:1.1}
+ .top-actions #errorHistoryBtn,.top-actions #pdfBtn,.top-actions #addBtn{width:100%;min-width:0;min-height:40px}
+ .top-actions #pdfBtn span,.top-actions #addBtn span{display:inline}
+ .top-actions #simpleViewBtn,.top-actions #simpleRefreshBtn{grid-column:1/-1;width:100%;min-width:0;min-height:40px;padding:7px 10px;font-size:12px}
+ .cloud-strip{width:auto;max-width:none;margin:9px 10px 0;padding:10px;align-items:stretch;flex-direction:column;min-width:0}
+ .cloud-state{width:100%;min-width:0}
+ .cloud-actions{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:7px;min-width:0}
+ .device-mode-control{grid-column:1/-1;width:100%;min-width:0;white-space:normal;justify-content:space-between}
+ .device-mode-control select{flex:1;min-width:0;max-width:65%}
+ .cloud-actions button{width:100%;min-width:0;max-width:100%;padding:6px 7px;overflow-wrap:anywhere}
+ .cloud-actions #cloudHistoryBtn{grid-column:1/-1}
+ .simple-view .topbar{justify-content:stretch}
+ .simple-view .top-actions{flex:initial}
+}
+@media(max-width:600px){
+ .topbar{padding:9px 10px;gap:8px}
+ .top-actions{gap:5px}
+ .top-actions #pdfBtn,.top-actions #addBtn{font-size:16px}
+ .top-actions #pdfBtn span,.top-actions #addBtn span{display:none}
+ .cloud-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .device-mode-control select{max-width:62%}
+}

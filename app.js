@@ -1,4 +1,4 @@
-/* Filamentos 3D v3.1 Beta — PWA offline-first con interfaz ES/DE/EN */
+/* Filamentos 3D v3.1 Alfa — PWA offline-first con interfaz ES/DE/EN */
 const DB_NAME='filamentos3d-db', DB_VERSION=1, STORE='app';
 const PRESET_COLORS=['#FFFFFF','#111111','#888888','#E53935','#1565C0','#2E7D32','#FDD835','#EF6C00','#7B1FA2','#795548','#00BCD4','#F06292','#B0BEC5','#D4AF37','#B5E5F2'];
 const COLOR_LABELS={'#FFFFFF':'Blanco','#111111':'Negro','#888888':'Gris','#E53935':'Rojo','#1565C0':'Azul','#2E7D32':'Verde','#FDD835':'Amarillo','#EF6C00':'Naranja','#7B1FA2':'Violeta','#795548':'Marrón','#00BCD4':'Cian','#F06292':'Rosa','#B0BEC5':'Plateado','#D4AF37':'Dorado','#B5E5F2':'Transparente'};

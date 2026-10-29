@@ -1,6 +1,11 @@
-# Filamentos 3D — v3.1 Beta
+# Filamentos 3D — v3.1 Alfa
 
 PWA personal para iPhone, iPad, Mac, Android y Windows. Conserva el inventario IndexedDB, los perfiles separados por cuenta Google, la sincronización manual con Firebase, la interfaz ES/DE/EN, las fotografías, el OCR, los catálogos, las plantillas y la exportación PDF.
+
+## Novedad v3.1 Alfa
+
+- En pantallas estrechas, la cabecera y los controles de sincronización se distribuyen en varias filas para que quepan en el ancho del celular. La vista de escritorio conserva su distribución.
+- Se conserva el selector Lista/Cuadrícula y el ajuste de columnas también en Solo visualización.
 
 ## Sincronización y diagnóstico
 
@@ -24,7 +29,7 @@ Las lecturas GET de Firebase reintentan hasta tres veces ante fallos de red tran
 ## Publicar en GitHub Pages
 
 1. Descomprime el ZIP y copia el contenido en la raíz del repositorio de GitHub Pages.
-2. Conserva `firebase-config.js` de la base Alfa; no necesita cambios para esta actualización.
+2. Conserva `firebase-config.js` de la base v3.1 Beta; no necesita cambios para esta actualización.
 3. Publica y abre la aplicación con Internet. La caché nueva del service worker actualiza los recursos.
 4. En iPhone, iPad y Mac, abre **Historial de errores** después de reproducir el fallo y descarga el registro JSON para revisar los eventos.
 
