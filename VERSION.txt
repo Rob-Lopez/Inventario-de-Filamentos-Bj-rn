@@ -4,4 +4,4 @@ Novedad: diseño adaptable para celular; los controles superiores y de sincroniz
 Se conservan todas las funciones y datos de la versión base, incluido el selector Lista/Cuadrícula y el ajuste de columnas también en Solo visualización.
 Firebase: se conserva REST, estructura de datos y aislamiento por UID.
 Preferencias Master/Solo visualización y vista simplificada: locales a cada dispositivo; no hay bloqueo global de otros dispositivos Master.
-PWA cache: filamentos-v3.1-alfa-1
+PWA cache: filamentos-v3.1-alfa-2

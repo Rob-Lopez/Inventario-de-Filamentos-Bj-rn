@@ -86,7 +86,7 @@
 
 
 /* v3.1 Alfa: responsive controls for phones and narrow screens */
-@media(max-width:900px){
+@media(max-width:1100px),(hover:none) and (pointer:coarse){
  .topbar{
   height:auto;min-height:0;padding:10px 12px;display:grid;grid-template-columns:minmax(0,1fr);gap:9px;
  }
@@ -102,7 +102,7 @@
  .top-actions #backupBtn.backup-button{width:100%;min-width:0;max-width:none;height:auto;min-height:40px;padding:5px 6px;font-size:10px;line-height:1.1}
  .top-actions #errorHistoryBtn,.top-actions #pdfBtn,.top-actions #addBtn{width:100%;min-width:0;min-height:40px}
  .top-actions #pdfBtn span,.top-actions #addBtn span{display:inline}
- .top-actions #simpleViewBtn,.top-actions #simpleRefreshBtn{grid-column:1/-1;width:100%;min-width:0;min-height:40px;padding:7px 10px;font-size:12px}
+ .top-actions #simpleViewBtn,.top-actions #simpleRefreshBtn{grid-column:1/-1;width:100%;min-width:0;min-height:54px;padding:9px 10px;font-size:16px}
  .cloud-strip{width:auto;max-width:none;margin:9px 10px 0;padding:10px;align-items:stretch;flex-direction:column;min-width:0}
  .cloud-state{width:100%;min-width:0}
  .cloud-actions{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:7px;min-width:0}
